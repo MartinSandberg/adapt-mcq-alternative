@@ -1,4 +1,8 @@
-# adapt-contrib-mcq  
+# adapt-mcq-alternative
+
+Based on adapt-contrib-mcq  but showing feedback in the component itself not in Tutor
+
+Except for the name all information below regarding adapt-contrib-mcq is valid
 
 <img src="https://github.com/adaptlearning/documentation/blob/master/04_wiki_assets/plug-ins/images/mcq01.gif" alt="multiple choice question in action" align="right"> **Multiple Choice Question (MCQ)** is a *question component* bundled with the [Adapt framework](https://github.com/adaptlearning/adapt_framework).   
 
