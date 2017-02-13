@@ -1,0 +1,54 @@
+<div class="mcq-alternative-inner component-inner" role="region" aria-label="{{_globals._components._mcq-alternative.ariaRegion}}" {{#if _globals._components._mcq-alternative.ariaRegion}}tabindex="0"{{/if}}>
+    {{> component this}}
+    <div class="mcq-alternative-widget component-widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}">
+        
+
+
+
+
+
+        {{#each _items}}
+        <div class="mcq-alternative-item component-item component-item-color {{#unless ../_isEnabled}}{{#if ../_canShowMarking}}{{#if _isCorrect}}correct{{else}}incorrect{{/if}}{{/if}}{{/unless}} item-{{@index}}">
+            <input type="checkbox" id="{{../_id}}-{{@index}}" aria-labelledby="{{../_id}}-{{@index}}-aria"{{#unless ../_isEnabled}} disabled{{/unless}} aria-label="{{a11y_normalize text}}"/>
+            <label aria-hidden="true" id="{{../_id}}-{{@index}}-aria" for="{{../_id}}-{{@index}}" class="component-item-text-color component-item-border{{#unless ../_isEnabled}} disabled {{/unless}}{{#if _isSelected}} selected{{/if}} a11y-ignore" tabindex="-1">
+                <div class="mcq-alternative-item-state">
+                    <div class="mcq-alternative-item-icon mcq-alternative-answer-icon {{#if ../_isRadio}}radio{{else}}checkbox{{/if}} component-item-text-color icon"></div>
+                    <div class="mcq-alternative-item-icon mcq-alternative-correct-icon icon icon-tick"></div>
+                    <div class="mcq-alternative-item-icon mcq-alternative-incorrect-icon icon icon-cross"></div>
+                </div>
+                <div class="mcq-alternative-item-inner">
+                    {{{text}}}
+                </div>
+            </label>
+        </div>
+        {{/each}}
+
+
+<div class="mcq-alternative-popup" role="dialog" aria-label="{{_globals._components._mcq-alternative.ariaPopupLabel}}">
+
+        <div class="mcq-alternative-popup-toolbar component-item-color clearfix">
+          <button class="base mcq-alternative-popup-done" aria-label="{{_globals._accessibility._ariaLabels.closePopup}}" role="button">
+            <div class="mcq-alternative-popup-close component-item-text-color icon icon-cross"></div>
+          </button>
+<div class="mcq-alternative-content-title accessible-text-block" role="heading" aria-level="5" tabindex="0">
+                    Title
+                </div>
+        </div>
+
+        <div class="mcq-alternative-popup-inner clearfix">
+          <div class="mcq-alternative-item component-item {{_classes}}">
+            <div class="mcq-alternative-item-content">
+              <div class="mcq-alternative-item-content-inner">
+                
+                <div class="mcq-alternative-content-body">
+                    This is the text
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+    </div>
+</div>
