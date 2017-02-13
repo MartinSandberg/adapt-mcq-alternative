@@ -208,29 +208,22 @@ define(function (require) {
             this.model.set('_score', score);
         },
         setupFeedback: function () {
-
             if (this.model.get('_isCorrect')) {
-                this.setupCorrectFeedbackPopup();
+                this.setupCorrectFeedback();
             } else if (this.isPartlyCorrect()) {
-                this.setupPartlyCorrectFeedbackPopup();
+                this.setupPartlyCorrectFeedback();
             } else {
                 // apply individual item feedback
                 if ((this.model.get('_selectable') === 1) && this.model.get('_selectedItems')[0].feedback) {
-                    this.setupIndividualFeedbackPopup(this.model.get('_selectedItems')[0]);
+                    this.setupIndividualFeedback(this.model.get('_selectedItems')[0]);
                     return;
                 } else {
-                    this.setupIncorrectFeedbackPopup();
+                    this.setupIncorrectFeedback();
                 }
             }
+
         },
-        /*
-         setupIndividualFeedback: function (selectedItem) {
-         this.model.set({
-         feedbackTitle: this.model.get('title'),
-         feedbackMessage: selectedItem.feedback
-         });
-         },
-         */
+        
         // This is important and should give the user feedback on how they answered the question
         // Normally done through ticks and crosses by adding classes
         showMarking: function () {
@@ -320,55 +313,16 @@ define(function (require) {
 
             Adapt.trigger('popup:closed', this.$('.mcq-alternativ-popup-inner'));
         },
-        setupCorrectFeedbackPopup: function () {
-            var feedbackTitle = this.model.get('title');
-            var thefeedbackMessage = this.model.get('_feedback')['correct'];
-
-            this.$('.mcq-alternative-content-title').html(feedbackTitle);
-            this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
-            
-            // set feedbackMessage in order for the Show Feedbackbutton to appear
-            this.model.set({
-                 feedbackMessage: thefeedbackMessage
-             });
-        },
-        setupPartlyCorrectFeedbackPopup: function () {
-            var feedbackTitle = this.model.get('title');
-            var thefeedbackMessage = this.model.get('_feedback')['_partlyCorrect']['notFinal'];
-
-            this.$('.mcq-alternative-content-title').html(feedbackTitle);
-            this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
-            
-             // set feedbackMessage in order for the Show Feedbackbutton to appear
-            this.model.set({
-                 feedbackMessage: thefeedbackMessage
-             });
-        },
-        setupIndividualFeedbackPopup: function (selectedItem) {
-            var feedbackTitle = this.model.get('title');
+        setupIndividualFeedback: function (selectedItem) {
+            var thefeedbackTitle = this.model.get('title');
             var thefeedbackMessage = selectedItem.feedback;
 
-            this.$('.mcq-alternative-content-title').html(feedbackTitle);
-            this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
-            
-             // set feedbackMessage in order for the Show Feedbackbutton to appear
             this.model.set({
-                 feedbackMessage: thefeedbackMessage
-             });
+                feedbackTitle: thefeedbackTitle,
+                feedbackMessage: thefeedbackMessage
+            });
         },
-        setupIncorrectFeedbackPopup: function () {
-            var feedbackTitle = this.model.get('title');
-            var thefeedbackMessage = this.model.get('_feedback')['_incorrect']['final'];
-
-            this.$('.mcq-alternative-content-title').html(feedbackTitle);
-            this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
-            
-             // set feedbackMessage in order for the Show Feedbackbutton to appear
-            this.model.set({
-                 feedbackMessage: thefeedbackMessage
-             });
-        },
-        // overriding the standard function
+        // overriding the standard function since we don't want Tutor to be triggered
         onSubmitClicked: function () {
             // canSubmit is setup in questions and should return a boolean
             // If the question stops the user form submitting - show instruction error
@@ -428,6 +382,14 @@ define(function (require) {
         },
         showFeedback: function () {
             if (this.model.get('_canShowFeedback')) {
+                var feedbackTitle = this.model.get('feedbackTitle');
+                var thefeedbackMessage = this.model.get('feedbackMessage');
+
+                this.$('.mcq-alternative-content-title').html(feedbackTitle);
+                this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
+
+
+
                 this.$('.mcq-alternative-popup').show();
                 this.$('.mcq-alternative-popup-inner .active').a11y_on(true);
 

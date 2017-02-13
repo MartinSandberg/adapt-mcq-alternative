@@ -1,16 +1,17 @@
 {
-  "name": "adapt-mcq-alternative",
-  "version": "2.0.6",
-  "framework": "^2.0.11",
-  "homepage": "https://github.com/MartinSandberg/adapt-mcq-alternative",
-  "issues": "https://github.com/MartinSandberg/adapt-mcq-alternative/issues",
-  "displayName" : "Multiple Choice Question Alternative",
-  "component" : "mcq-alternative",
-  "description": "The multiple choice question changed to show feedback internally",
-  "main": "/js/adapt-mcq-alternative.js",
-  "keywords": [
-    "adapt-plugin",
-    "adapt-component"
-  ],
-  "license": "GPLv3"
+    "name": "adapt-mcq-alternative",
+    "repository": "https://github.com/MartinSandberg/adapt-mcq-alternative",
+    "framework": "^2.0.11",
+    "version": "2.0.6",
+    "homepage": "https://github.com/MartinSandberg/adapt-mcq-alternative",
+    "issues": "https://github.com/MartinSandberg/adapt-mcq-alternative/issues",
+    "displayName": "Multiple Choice Question Alternative",
+    "component": "mcq-alternative",
+    "description": "The multiple choice question changed to show feedback internally",
+    "main": "/js/adapt-mcq-alternative.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-component"
+    ],
+    "license": "GPLv3"
 }
