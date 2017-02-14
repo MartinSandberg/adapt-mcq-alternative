@@ -310,8 +310,9 @@ define(function (require) {
             this.$('.mcq-alternative-popup').hide();
 
             this.isPopupOpen = false;
-
-            Adapt.trigger('popup:closed', this.$('.mcq-alternativ-popup-inner'));
+            
+            // do not trigger as this will make the page jump around on IE11
+            //Adapt.trigger('popup:closed', this.$('.mcq-alternativ-popup-inner'));
         },
         setupIndividualFeedback: function (selectedItem) {
             var thefeedbackTitle = this.model.get('title');
@@ -394,8 +395,9 @@ define(function (require) {
                 this.$('.mcq-alternative-popup-inner .active').a11y_on(true);
 
                 this.isPopupOpen = true;
-
-                Adapt.trigger('popup:opened', this.$('.mcq-alternative-popup-inner'));
+                
+                // Do not trigger this as it will trigger movement of the page in IE11
+                //Adapt.trigger('popup:opened', this.$('.mcq-alternative-popup-inner'));
 
                 this.$('.mcq-alternative-popup-inner .active').a11y_focus();
 
