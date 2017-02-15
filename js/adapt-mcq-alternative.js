@@ -383,10 +383,8 @@ define(function (require) {
         },
         showFeedback: function () {
             if (this.model.get('_canShowFeedback')) {
-                var feedbackTitle = this.model.get('feedbackTitle');
                 var thefeedbackMessage = this.model.get('feedbackMessage');
 
-                this.$('.mcq-alternative-content-title').html(feedbackTitle);
                 this.$('.mcq-alternative-content-body').html(thefeedbackMessage);
 
 
